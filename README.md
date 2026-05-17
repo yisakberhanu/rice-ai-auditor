@@ -1,4 +1,3 @@
-```markdown
 # 🌾 AfricaRice AI Auditor: On-Device Edge AI Quality Grading Platform
 
 ### 🥈 2nd Place Winner – UNIDO AfricaRice Global App Builder Challenge
