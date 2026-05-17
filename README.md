@@ -1,6 +1,6 @@
 # 🌾 AfricaRice AI Auditor: On-Device Edge AI Quality Grading Platform
 
-### 🥈 2nd Place Winner – UNIDO AfricaRice Global App Builder Challenge
+### 🥈 UNIDO AfricaRice Global App Builder Challenge
 
 An enterprise-grade, "field-ready" mobile computer vision application engineered to replace traditional laboratory-grade rice quality assessment with real-world, 100% offline edge inference. Designed specifically for low-connectivity, mid-to-low spec hardware environments across sub-Saharan agricultural supply chains.
 
@@ -116,7 +116,7 @@ To eliminate the "Garbage In, Garbage Out" vector, input images pass through aut
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/africarice-ai-auditor.git
+git clone https://github.com/yisakberhanu/africarice-ai-auditor.git
 cd africarice-ai-auditor
 
 ```
@@ -164,9 +164,6 @@ The modular architecture of the execution engine makes it uniquely positioned to
 
 ---
 
-*Developed under the operational frameworks inspired by the United Nations Industrial Development Organization (UNIDO) & Africa Rice Center (AfricaRice) data-driven initiatives.*
-
-```
 
 
 ```
