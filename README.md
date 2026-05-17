@@ -1,9 +1,3 @@
-I see exactly what happened! The previous response gave you a Python script *designed to generate* the text, which is why you are seeing all that extra code like ````python readme_content = """` showing up on your GitHub page.
-
-You do not need the Python wrapper. You just need the pure Markdown text. I have stripped away all the Python code, fixed the broken layout for the architecture diagram, and cleaned up the formatting.
-
-Copy **only the text inside the box below**, and paste it directly into your GitHub `README.md` file:
-
 ```markdown
 # 🌾 AfricaRice AI Auditor: On-Device Edge AI Quality Grading Platform
 
