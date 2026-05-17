@@ -1,5 +1,11 @@
-```python
-readme_content = """# 🌾 AfricaRice AI Auditor: On-Device Edge AI Quality Grading Platform
+I see exactly what happened! The previous response gave you a Python script *designed to generate* the text, which is why you are seeing all that extra code like ````python readme_content = """` showing up on your GitHub page.
+
+You do not need the Python wrapper. You just need the pure Markdown text. I have stripped away all the Python code, fixed the broken layout for the architecture diagram, and cleaned up the formatting.
+
+Copy **only the text inside the box below**, and paste it directly into your GitHub `README.md` file:
+
+```markdown
+# 🌾 AfricaRice AI Auditor: On-Device Edge AI Quality Grading Platform
 
 ### 🥈 2nd Place Winner – UNIDO AfricaRice Global App Builder Challenge
 
@@ -29,18 +35,10 @@ Click the preview below to watch the live system deployment, showcasing image ac
 
 The system is structurally divided into three isolated layers to guarantee strict separation of concerns, reliable fail-safes, and predictable execution under field environments:
 
-
-```
-
 ```text
-SUCCESS: README.md generated successfully.
-
-
-```
-
 [Camera Stream / Sensors] ──> [Hardware-Level Guards] ──> [TFLite Inference Engine]
-│                          │
-▼                          ▼
+│                           │
+▼                           ▼
 [Real-time Feedback UI]     [Commercial Grading Post-Processor]
 │
 ▼
@@ -53,19 +51,24 @@ SUCCESS: README.md generated successfully.
 ## 🧠 Deep Dive: Machine Learning & Model Engineering
 
 ### 1. Model Selection & Customization
+
 * **Base Architecture:** Utilized a tailored **DualHead-MobileNetV3** architecture. MobileNetV3 was selected over heavier models (e.g., ResNet, EfficientNet) due to its specialized balance of inverted residual blocks and attention-driven **Squeeze-and-Excitation** modules.
 * **Dual-Head Topology:** Configured separate output heads to simultaneously handle structural multi-class grain classification and fine-grained localized defect segmentation.
 
 ### 2. Exploratory Data Analysis (EDA) & Addressing Imbalances
+
 * **Colorimetric Distance Analysis:** Discovered during EDA that the primary feature space separation relied heavily on the RGB-to-CIELAB distance vector between the target rice grains and the standardized matte blue capture background.
 * **Class Imbalance Resolution:** Addressed highly skewed training sets (excessive healthy/whole grains vs. rare fermented/chalky grains) by applying advanced pixel-level data augmentations (affine transformations, selective color jittering, and controlled contrast alterations) alongside weighted cross-entropy loss metrics.
 
 ### 3. Aggressive Quantization & Edge Optimization
+
 * **Optimization Pipeline:** Post-training, the model underwent **Static Range Quantization** using the TensorFlow Lite optimization toolchain.
 * **Quantization Metrics:**
-    * **Memory Footprint:** Slashed model footprint by **~75%**, compacting it to under **5MB**.
-    * **Latency:** Achieved steady-state on-device execution latencies of **<500ms** on standard mid-range mobile processing units.
-    * **Precision Retention:** Maintained **>98.2%** accuracy retention relative to the unquantized float32 baseline.
+* **Memory Footprint:** Slashed model footprint by **~75%**, compacting it to under **5MB**.
+* **Latency:** Achieved steady-state on-device execution latencies of **<500ms** on standard mid-range mobile processing units.
+* **Precision Retention:** Maintained **>98.2%** accuracy retention relative to the unquantized float32 baseline.
+
+
 
 ---
 
@@ -84,19 +87,24 @@ The frontend application was developed using **Flutter/Dart**, prioritizing abso
 The primary engineering achievement lies in the integration layer, turning a standard deep learning model into a resilient, standalone tool capable of operating seamlessly in extreme conditions.
 
 ### 1. Pre-Flight Input Validation (Hardware Guards)
+
 To eliminate the "Garbage In, Garbage Out" vector, input images pass through automated programmatic filters at the hardware-stream level:
+
 * **Motion Blur Minimization:** Computes real-time Laplacian variance scores over incoming frames. If the variance drops below a set threshold (indicating motion blur from a shaky hand), the capture trigger is safely locked out.
 * **Luminance & Shadow Bounds:** Analyzes raw frame byte intensity vectors. If environmental lighting drops below critical operating margins, the system intercepts the execution stream to guide the user toward a better source before drawing computational power.
 
 ### 2. Dual-Image Caching Loop
+
 * To comply with strict validation rubrics demanding dual-sample correlation, the engine performs low-overhead background processing on duplicate samples instantly. Final deep-dive analysis is selectively cached and synchronized based on localized UI triggers, reducing processing overhead.
 
 ### 3. Operational Logic Translator
+
 * **Raw Output Processing:** Neural network prediction arrays (floats) are instantly piped into an isolated custom mapping domain engine.
 * **Industry Mapping:** The translation layer maps raw outputs onto formal **AfricaRice Standard Classifications**, converting raw classification points into strict industry-accepted commercial metrics (e.g., Slender, Medium, Bold, Chalky, or Imbricated).
-* **Plain-Language Reporting:** If critical parameters cross threat vectors (e.g., Yellow/Fermented Grain ratio $>10\%$), the engine instantly short-circuits to an active alert state, flashing highly legible, multi-lingual commercial action summaries for the operator.
+* **Plain-Language Reporting:** If critical parameters cross threat vectors (e.g., Yellow/Fermented Grain ratio >10%), the engine instantly short-circuits to an active alert state, flashing highly legible, multi-lingual commercial action summaries for the operator.
 
 ### 4. Fully Offline Ledger & Telemetry
+
 * **Local Storage Engine:** Incorporates a lightweight transactional **SQLite** embedded ledger database to save execution outputs locally, ensuring complete operations are protected in deep rural environments without internet access.
 * **Structured Exporting:** Generates optimized CSV payloads containing explicit quality matrix strings, timestamps, and opt-in GPS geographic coordinates to support downstream agricultural traceability.
 
@@ -105,26 +113,30 @@ To eliminate the "Garbage In, Garbage Out" vector, input images pass through aut
 ## ⚙️ Project Setup & Local Deployment
 
 ### Prerequisites
+
 * Flutter SDK (v3.x or higher)
 * Android SDK (API Level 24+) / iOS Deployment Target (13.0+)
 * Target physical testing device (on-device hardware testing recommended over emulation for accurate latency verification)
 
 ### Installation
+
 1. Clone the repository:
-   ```bash
-   git clone [https://github.com/your-username/africarice-ai-auditor.git](https://github.com/your-username/africarice-ai-auditor.git)
-   cd %WORKSPACE%/africarice-ai-auditor
+
+```bash
+git clone https://github.com/your-username/africarice-ai-auditor.git
+cd africarice-ai-auditor
 
 ```
 
 2. Fetch dependencies:
+
 ```bash
 flutter pub get
 
 ```
 
-
 3. Ensure the quantized `.tflite` model files are accurately resolved within your asset configurations:
+
 ```yaml
 flutter:
   assets:
@@ -132,14 +144,12 @@ flutter:
 
 ```
 
-
 4. Deploy to connected target device:
+
 ```bash
 flutter run --release
 
 ```
-
-
 
 ---
 
@@ -156,32 +166,14 @@ The modular architecture of the execution engine makes it uniquely positioned to
 
 **Yisak Bule** *AI Engineer & Zindi Ambassador* Specializing in Custom AI Models, On-Device Computer Vision, and High-Performance Mobile Development.
 
-* **LinkedIn:** [linkedin.com/in/yisak-bule](https://www.linkedin.com/) *(Replace with actual link)*
-* **GitHub Portfolio:** [github.com/yisak-bule](https://github.com/) *(Replace with actual link)*
+* **LinkedIn:** [linkedin.com/in/yisak-bule](https://www.google.com/search?q=https://www.linkedin.com/in/yisak-bule)
+* **GitHub Portfolio:** [github.com/yisak-bule](https://www.google.com/search?q=https://github.com/yisak-bule)
 
 ---
 
 *Developed under the operational frameworks inspired by the United Nations Industrial Development Organization (UNIDO) & Africa Rice Center (AfricaRice) data-driven initiatives.*
-"""
-
-with open("README.md", "w", encoding="utf-8") as f:
-f.write(readme_content)
-
-print("SUCCESS: README.md generated successfully.")
 
 ```
-Your Markdown file is ready
-[file-tag: code-generated-file-0-1779014833567314597]
 
-This `README.md` file has been crafted to serve as a showcase for technical recruiters, technical product managers, and engineering leaders. 
-
-### Why this README stands out to technical recruiters:
-* **The Engineering Trifecta:** It explicitly breaks down your three core strengths—**Model Building**, **App Architecture**, and **System Integration**. Recruiters don't just want a data scientist who writes Python notebooks; they want an engineer who knows how to put that model on a phone and make it work offline.
-* **Architecture-First Approach:** It frames the project through architectural design choices (Separation of Concerns, Asynchronous Threads, Memory Management). This proves you write clean, scalable code.
-* **Production Terminology:** It utilizes professional industry keywords like *Static Range Quantization*, *Laplacian Variance*, *Resource Allocation*, and *Inverted Residual Blocks*. This instantly signals to hiring managers that you know what you are doing.
-* **Business & Field Relevance:** It focuses heavily on how the code solves a real business problem (replacing a physical lab, handling dead battery zones, translating numbers into plain English), which is exactly what enterprise companies look for.
-* **Embedded Video Demonstration:** The YouTube link is integrated into a clean, modern markdown badge layout at the very top of the repository to ensure reviewers watch your system working immediately. 
-
-You can download this file, place it in your GitHub repository, and update the contact links at the bottom to match your personal handles!
 
 ```
